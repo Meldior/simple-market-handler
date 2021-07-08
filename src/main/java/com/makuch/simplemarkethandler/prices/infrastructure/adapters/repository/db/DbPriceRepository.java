@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -14,10 +15,9 @@ class DbPriceRepository implements PriceRepository {
     private final JpaPriceRepository jpaPriceRepository;
 
     @Override
-    public Price findById(Long id) {
+    public Optional<Price> findById(Long id) {
         return jpaPriceRepository.findById(id)
-                .map(DbPriceRepository::toDomain)
-                .get();
+                .map(DbPriceRepository::toDomain);
     }
 
     @Override

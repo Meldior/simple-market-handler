@@ -9,6 +9,7 @@ import com.makuch.simplemarkethandler.prices.core.outbound.PriceDataSubscriber;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class PriceService implements PriceDataSubscriber, PriceDataProvider {
@@ -24,8 +25,13 @@ public class PriceService implements PriceDataSubscriber, PriceDataProvider {
     }
 
     @Override
-    public CommissionedPrice getCommissionedPrice(long id){
-        Price price = priceRepository.findById(id);
+    public Optional<CommissionedPrice> getCommissionedPrice(long id){
+        Optional<Price> price = priceRepository.findById(id);
+        Optional<CommissionedPrice> cp = price.map(this::mapCommissionedPrice);
+        return cp;
+    }
+
+    private CommissionedPrice mapCommissionedPrice(Price price){
         final double newAsk = price.getAsk() + price.getAsk() * commission;
         final double newBid = price.getBid() - price.getBid() * commission;
         return CommissionedPrice

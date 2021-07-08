@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 
 @SpringBootTest
 public class TestPriceService {
@@ -23,7 +25,9 @@ public class TestPriceService {
 
         //then
         final double commission = 0.001;
-        CommissionedPrice price = priceService.getCommissionedPrice(107L);
+        Optional<CommissionedPrice> priceOptional = priceService.getCommissionedPrice(107L);
+        assert priceOptional.isPresent();
+        CommissionedPrice price = priceOptional.get();
         assert price.getInstrumentName().equals("EUR/JPY");
         assert price.getBid() == 119.60 - 119.60 * commission;
         assert price.getAsk() == 119.90 + 119.90 * commission;

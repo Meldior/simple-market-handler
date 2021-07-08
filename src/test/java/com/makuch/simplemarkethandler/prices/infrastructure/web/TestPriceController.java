@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootTest
 public class TestPriceController {
@@ -30,9 +31,11 @@ public class TestPriceController {
         priceRepository.saveAll(Lists.newArrayList(existingPrice));
 
         //when
-        CommissionedPrice commissionedPrice = priceController.getCommissionedPrice(existingPrice.getId());
+        Optional<CommissionedPrice> commissionedPriceOptional = priceController.getCommissionedPrice(existingPrice.getId());
 
         //then
+        assert commissionedPriceOptional.isPresent();
+        CommissionedPrice commissionedPrice = commissionedPriceOptional.get();
         assert commissionedPrice.getBid() == existingPrice.getBid() - existingPrice.getBid() * 0.001;
         assert commissionedPrice.getAsk() == existingPrice.getAsk() + existingPrice.getAsk() * 0.001;
     }
