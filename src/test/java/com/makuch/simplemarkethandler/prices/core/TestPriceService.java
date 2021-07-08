@@ -1,7 +1,6 @@
 package com.makuch.simplemarkethandler.prices.core;
 
 import com.makuch.simplemarkethandler.prices.core.domain.CommissionedPrice;
-import com.makuch.simplemarkethandler.prices.core.inbound.PriceRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TestPriceService {
     @Autowired
-    PriceService priceService;;
+    PriceService priceService;
 
     @Test
     void test_OnMessageCalledWithMessage_CommissionedPricesCanBeRetrievedFromService(){
