@@ -1,10 +1,13 @@
-package com.makuch.simplemarkethandler.prices.domain;
+package com.makuch.simplemarkethandler.prices.infrastructure.adapters.repository.memory;
+
+import com.makuch.simplemarkethandler.prices.core.domain.Price;
+import com.makuch.simplemarkethandler.prices.core.inbound.PriceRepository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryPriceRepository implements PriceRepository{
+public class InMemoryPriceRepository implements PriceRepository {
     Map<Long, Price> priceMap = new HashMap<Long, Price>();
 
     @Override

@@ -1,5 +1,6 @@
-package com.makuch.simplemarkethandler.prices.domain;
+package com.makuch.simplemarkethandler.prices.infrastructure.adapters.repository.db;
 
+import com.makuch.simplemarkethandler.prices.core.domain.Price;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,6 @@ import java.time.LocalDateTime;
 @Table(name = "prices")
 class JpaPrice {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private final Long id;
 
     @Column(nullable = false)

@@ -1,4 +1,6 @@
-package com.makuch.simplemarkethandler.prices.domain;
+package com.makuch.simplemarkethandler.prices.core.inbound;
+
+import com.makuch.simplemarkethandler.prices.core.domain.Price;
 
 import java.util.List;
 

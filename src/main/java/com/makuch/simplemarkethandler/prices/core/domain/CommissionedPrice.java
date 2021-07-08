@@ -1,9 +1,11 @@
-package com.makuch.simplemarkethandler.prices.domain;
+package com.makuch.simplemarkethandler.prices.core.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Builder
+@Getter
 @RequiredArgsConstructor
 public class CommissionedPrice {
     private final Long id;

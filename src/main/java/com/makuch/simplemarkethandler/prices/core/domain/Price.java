@@ -1,4 +1,4 @@
-package com.makuch.simplemarkethandler.prices.subscriber;
+package com.makuch.simplemarkethandler.prices.core.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
 @RequiredArgsConstructor
-public class PriceData {
+@Builder
+public class Price {
     private final Long id;
     private final String instrumentName;
     private final Double bid;
